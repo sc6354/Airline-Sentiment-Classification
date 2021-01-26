@@ -2,12 +2,8 @@
 <html>
 <head><meta charset="utf-8" />
 
+
 <title>Airline_sentiment_classification</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
 
 <style type="text/css">
     /*!
@@ -13033,20 +13029,17 @@ div#notebook {
   div.cell {
     display: block;
     page-break-inside: avoid;
-  } 
-  div.output_wrapper { 
-    display: block;
-    page-break-inside: avoid; 
   }
-  div.output { 
+  div.output_wrapper {
     display: block;
-    page-break-inside: avoid; 
+    page-break-inside: avoid;
+  }
+  div.output {
+    display: block;
+    page-break-inside: avoid;
   }
 }
 </style>
-
-<!-- Custom stylesheet, it must be in the same directory as the html file -->
-<link rel="stylesheet" href="custom.css">
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
@@ -13069,20 +13062,63 @@ div#notebook {
         }
     });
     </script>
-    <!-- End of mathjax configuration --></head>
+    <!-- End of mathjax configuration -->
+
+<style>
+        .cell.nbinteract-left {
+            width: 50%;
+            float: left;
+        }
+
+        .cell.nbinteract-right {
+            width: 50%;
+            float: right;
+        }
+
+        .cell.nbinteract-hide_in > .input {
+            display: none;
+        }
+
+        .cell.nbinteract-hide_out > .output_wrapper {
+            display: none;
+        }
+
+        .cell:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+
+        div.output_subarea {
+            max-width: initial;
+        }
+
+        .jp-OutputPrompt {
+            display: none;
+        }
+    </style></head>
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
-    <div class="container" id="notebook-container">
+    <div class="container">
+      
 
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+
+
+  <div class="cell text_cell">
+    <button class="js-nbinteract-widget">
+      Loading widgets...
+    </button>
+  </div>
+
+
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="US-Airline-Twitter-Sentiment-Analysis-using-Logistic-Regression">US Airline Twitter Sentiment Analysis using Logistic Regression<a class="anchor-link" href="#US-Airline-Twitter-Sentiment-Analysis-using-Logistic-Regression">&#182;</a></h1>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="In-this-notebook,-we-will-implement-a-simple-logistic-regression-model-to-classify-a-tweet-as-negative,-positive,-or-neutral.">In this notebook, we will implement a simple logistic regression model to classify a tweet as negative, positive, or neutral.<a class="anchor-link" href="#In-this-notebook,-we-will-implement-a-simple-logistic-regression-model-to-classify-a-tweet-as-negative,-positive,-or-neutral.">&#182;</a></h4><p>A sentiment analysis job about the problems of each major U.S. airline. Twitter data was scraped from February of 2015 and contributors were asked to first classify positive, negative, and neutral tweets, followed by categorizing negative reasons (such as "late flight" or "rude service").</p>
 <p>The dataset is publicly available on [Kaggle] (<a href="https://www.kaggle.com/crowdflower/twitter-airline-sentiment">https://www.kaggle.com/crowdflower/twitter-airline-sentiment</a>) and <a href="https://data.world/crowdflower/airline-twitter-sentiment">Data.world</a>.</p>
@@ -13091,9 +13127,13 @@ div#notebook {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
@@ -13106,17 +13146,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Step-1:-Load-the-data">Step 1: Load the data<a class="anchor-link" href="#Step-1:-Load-the-data">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[157]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">datapath</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;/Users/susanchen/Desktop/Airline_sentiment/Airline-Sentiment-2.csv&quot;</span><span class="p">)</span>
@@ -13126,10 +13169,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[158]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Custom function that takes in a dataframe and extracts the tweets and labels</span>
@@ -13144,10 +13191,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[159]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tweets</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">preprocess_data</span><span class="p">(</span><span class="n">datapath</span><span class="p">)</span>
@@ -13157,10 +13208,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[217]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tweets</span>
@@ -13176,8 +13231,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[217]:</div>
-
+    
 
 
 
@@ -13197,24 +13251,26 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Step-2:-Clean-up-the-data">Step 2: Clean up the data<a class="anchor-link" href="#Step-2:-Clean-up-the-data">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="We-start-by-removing-links,-symbols,-and-@mentions-from-each-tweet">We start by removing links, symbols, and @mentions from each tweet<a class="anchor-link" href="#We-start-by-removing-links,-symbols,-and-@mentions-from-each-tweet">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
@@ -13247,10 +13303,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[161]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">clean_tweets</span> <span class="o">=</span> <span class="n">cleanTweet</span><span class="p">(</span><span class="n">tweets</span><span class="p">)</span>
@@ -13260,10 +13320,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[218]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># look at the first ten clean tweets </span>
@@ -13280,8 +13344,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[218]:</div>
-
+    
 
 
 
@@ -13303,17 +13366,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Stopwords-(such-as-'the',-'a',-'an',-'in',-'for')-carry-no-sentimental-meaning-and-can-up-valuable-processing-time-and-space-in-our-database,-so-it-is-best-pratice-to-remove-them.">Stopwords (such as 'the', 'a', 'an', 'in', 'for') carry no sentimental meaning and can up valuable processing time and space in our database, so it is best pratice to remove them.<a class="anchor-link" href="#Stopwords-(such-as-'the',-'a',-'an',-'in',-'for')-carry-no-sentimental-meaning-and-can-up-valuable-processing-time-and-space-in-our-database,-so-it-is-best-pratice-to-remove-them.">&#182;</a></h4><h4 id="NLTK-(Natural-Language-toolkit)-in-python-has-a-list-of-stopwords-stored-in-16-languages.-We-will-only-need-the-english-list-as-our-tweets-are-in-English.">NLTK (Natural Language toolkit) in python has a list of stopwords stored in 16 languages. We will only need the english list as our tweets are in English.<a class="anchor-link" href="#NLTK-(Natural-Language-toolkit)-in-python-has-a-list-of-stopwords-stored-in-16-languages.-We-will-only-need-the-english-list-as-our-tweets-are-in-English.">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[160]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
@@ -13332,8 +13398,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>[nltk_data] Downloading package stopwords to
@@ -13346,10 +13411,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[83]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">removeStopWords</span><span class="p">(</span><span class="n">tweetArray</span><span class="p">):</span>
@@ -13362,10 +13431,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[383]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">removeStopWords</span><span class="p">(</span><span class="n">clean_tweets</span><span class="p">)</span>
@@ -13375,10 +13448,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[384]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">tokens</span>
@@ -13394,8 +13471,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[384]:</div>
-
+    
 
 
 
@@ -13414,17 +13490,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Encode-the-labels-as--1-(negative),-0-(neutral),-1(postive)">Encode the labels as -1 (negative), 0 (neutral), 1(postive)<a class="anchor-link" href="#Encode-the-labels-as--1-(negative),-0-(neutral),-1(postive)">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[164]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 1=positive, 0=neutral, -1=negative label conversion</span>
@@ -13444,17 +13523,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Encode-tweeets">Encode tweeets<a class="anchor-link" href="#Encode-tweeets">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[268]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
@@ -13470,10 +13552,14 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[332]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">vect</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
@@ -13483,24 +13569,26 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Step-3:-Training-a-Logistic-Regression-Model-on-the-data">Step 3: Training a Logistic Regression Model on the data<a class="anchor-link" href="#Step-3:-Training-a-Logistic-Regression-Model-on-the-data">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-1">Part 1<a class="anchor-link" href="#Part-1">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[307]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -13512,17 +13600,20 @@ div#notebook {
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Use-GridSearchCV-to-find-the-optimal-parameters">Use GridSearchCV to find the optimal parameters<a class="anchor-link" href="#Use-GridSearchCV-to-find-the-optimal-parameters">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[308]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
@@ -13546,8 +13637,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Best cross-validation score: 0.80
@@ -13560,24 +13650,26 @@ Best estimator:  LogisticRegression(C=0.5)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Using-5-rounds-of-experiments,-we-find-that-the-optimal-c-is-.5-and-the-best-cross-validation-accuracy-is-80%.-We-could-stop-here,-but-for-demonstrative-purposes,-I-will-also-show-how-to-fit-the-model-without-Grid-Search.">Using 5 rounds of experiments, we find that the optimal c is .5 and the best cross-validation accuracy is 80%. We could stop here, but for demonstrative purposes, I will also show how to fit the model without Grid Search.<a class="anchor-link" href="#Using-5-rounds-of-experiments,-we-find-that-the-optimal-c-is-.5-and-the-best-cross-validation-accuracy-is-80%.-We-could-stop-here,-but-for-demonstrative-purposes,-I-will-also-show-how-to-fit-the-model-without-Grid-Search.">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-2">Part 2<a class="anchor-link" href="#Part-2">&#182;</a></h3><h4 id="Start-by-initiating-a-Logistics-Regression-Model-and-then-training-it.-Here-we-set-C-equal-to-the-optimal-.5-(a-smaller-value-means-stronger-regularization-strength)">Start by initiating a Logistics Regression Model and then training it. Here we set C equal to the optimal .5 (a smaller value means stronger regularization strength)<a class="anchor-link" href="#Start-by-initiating-a-Logistics-Regression-Model-and-then-training-it.-Here-we-set-C-equal-to-the-optimal-.5-(a-smaller-value-means-stronger-regularization-strength)">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[310]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">log_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">multi_class</span> <span class="o">=</span> <span class="s1">&#39;multinomial&#39;</span><span class="p">,</span> <span class="n">solver</span> <span class="o">=</span> <span class="s1">&#39;lbfgs&#39;</span><span class="p">)</span>
@@ -13588,10 +13680,14 @@ Best estimator:  LogisticRegression(C=0.5)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[311]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -13601,10 +13697,14 @@ Best estimator:  LogisticRegression(C=0.5)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[312]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
@@ -13621,8 +13721,7 @@ Best estimator:  LogisticRegression(C=0.5)
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>0.7971311475409836
@@ -13633,24 +13732,26 @@ Best estimator:  LogisticRegression(C=0.5)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Our-accuracy-score-is-.7971-which-is-about-.8-or-80%.-This-confirms-the-results-from-Grid-Search.">Our accuracy score is .7971 which is about .8 or 80%. This confirms the results from Grid Search.<a class="anchor-link" href="#Our-accuracy-score-is-.7971-which-is-about-.8-or-80%.-This-confirms-the-results-from-Grid-Search.">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-3-Using-Pipelines-and-Cross-Validation">Part 3 Using Pipelines and Cross Validation<a class="anchor-link" href="#Part-3-Using-Pipelines-and-Cross-Validation">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[313]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
@@ -13668,8 +13769,7 @@ Best estimator:  LogisticRegression(C=0.5)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[313]:</div>
-
+    
 
 
 
@@ -13684,10 +13784,14 @@ Best estimator:  LogisticRegression(C=0.5)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[314]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
@@ -13705,10 +13809,14 @@ Best estimator:  LogisticRegression(C=0.5)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[315]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">scores2</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipe</span><span class="p">,</span> <span class="n">X</span><span class="o">=</span> <span class="n">features</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">labels</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span> <span class="o">=</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
@@ -13718,10 +13826,14 @@ Best estimator:  LogisticRegression(C=0.5)
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[316]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Accuracy scores: </span><span class="se">\n</span><span class="s1"> </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">scores2</span><span class="p">)</span>
@@ -13739,8 +13851,7 @@ Best estimator:  LogisticRegression(C=0.5)
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Accuracy scores: 
@@ -13755,31 +13866,32 @@ Model 2 Average accuracy (across experiments):
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Again-the-accuracy-scores-were-all-very-close-to-.8.">Again the accuracy scores were all very close to .8.<a class="anchor-link" href="#Again-the-accuracy-scores-were-all-very-close-to-.8.">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Step-4:-Make-predictions-on-random-tweets">Step 4: Make predictions on random tweets<a class="anchor-link" href="#Step-4:-Make-predictions-on-random-tweets">&#182;</a></h2>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Randomly-pick-tweets-from-the-test-set-and-predict-it's-label">Randomly pick tweets from the test set and predict it's label<a class="anchor-link" href="#Randomly-pick-tweets-from-the-test-set-and-predict-it's-label">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[318]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -13801,8 +13913,7 @@ Model 2 Average accuracy (across experiments):
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Predition Label: -1
@@ -13832,24 +13943,26 @@ Predition Label: 1
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="As-you-can-see,-the-model-was-able-to-accurately-predict-the-tweets-with-some-degree-of-error.-The-third-tweet:-&quot;@JetBlue-#489.-Flight-#589-is-departing-before-we-even-board&quot;-was-labeled-as-neutral-and-could-be-depending-on-the-context.-But-as-most-would-say,-that-tweet-express-more-negativity-than-neutral-feelings.">As you can see, the model was able to accurately predict the tweets with some degree of error. The third tweet: "@JetBlue #489. Flight #589 is departing before we even board" was labeled as neutral and could be depending on the context. But as most would say, that tweet express more negativity than neutral feelings.<a class="anchor-link" href="#As-you-can-see,-the-model-was-able-to-accurately-predict-the-tweets-with-some-degree-of-error.-The-third-tweet:-&quot;@JetBlue-#489.-Flight-#589-is-departing-before-we-even-board&quot;-was-labeled-as-neutral-and-could-be-depending-on-the-context.-But-as-most-would-say,-that-tweet-express-more-negativity-than-neutral-feelings.">&#182;</a></h4>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Test-the-Model-on-made-up-tweets">Test the Model on made-up tweets<a class="anchor-link" href="#Test-the-Model-on-made-up-tweets">&#182;</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[337]:</div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">pad_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">):</span>
@@ -13870,10 +13983,14 @@ Predition Label: 1
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[395]:</div>
+  </div>
+
+  
+
+  <div class="
+      cell border-box-sizing code_cell rendered">
+    <div class="input">
+
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test_tweets</span> <span class="o">=</span><span class="p">[]</span>
@@ -13902,8 +14019,7 @@ Predition Label: 1
 
 <div class="output_area">
 
-    <div class="prompt"></div>
-
+    
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>prediction: [1 1 0]
@@ -13914,19 +14030,36 @@ Predition Label: 1
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+  </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Running-the-prediction-on-made-up-tweets,-we-can-see-that-the-model-did-not-label-the-negative-tweet-as-negative,-but-rather-as-positive.-One-potential-reason-for-this-could-be-the-portion-of-positive-tweets-to-negative/neutral-tweets.-If-the-model-is-fitted-on-a-dataset-with-mostly-positive-tweets,-then-predicting-a-negative-tweet-may-require-a-different-model-or-more-training.">Running the prediction on made-up tweets, we can see that the model did not label the negative tweet as negative, but rather as positive. One potential reason for this could be the portion of positive tweets to negative/neutral tweets. If the model is fitted on a dataset with mostly positive tweets, then predicting a negative tweet may require a different model or more training.<a class="anchor-link" href="#Running-the-prediction-on-made-up-tweets,-we-can-see-that-the-model-did-not-label-the-negative-tweet-as-negative,-but-rather-as-positive.-One-potential-reason-for-this-could-be-the-portion-of-positive-tweets-to-negative/neutral-tweets.-If-the-model-is-fitted-on-a-dataset-with-mostly-positive-tweets,-then-predicting-a-negative-tweet-may-require-a-different-model-or-more-training.">&#182;</a></h4>
 </div>
 </div>
 </div>
+
+
+
+<!-- Loads nbinteract package -->
+<script src="https://unpkg.com/nbinteract-core" async></script>
+<script>
+  (function setupNbinteract() {
+    // If NbInteract hasn't loaded, wait one second and try again
+    if (window.NbInteract === undefined) {
+      setTimeout(setupNbinteract, 1000)
+      return
+    }
+
+    var interact = new window.NbInteract({
+      spec: 'sc6354/688a3f06a318f50fef8f8d9b8208adf5/master',
+      baseUrl: 'https://mybinder.org',
+      provider: 'gist',
+    })
+    interact.prepare()
+
+    window.interact = interact
+  })()
+</script>
     </div>
   </div>
 </body>
-
- 
-
-
-</html>
